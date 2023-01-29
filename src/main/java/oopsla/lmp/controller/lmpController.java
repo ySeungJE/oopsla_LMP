@@ -33,9 +33,10 @@ public class lmpController {
         return foundMember.get().getPassword();
     }
 
-    @GetMapping(value = "/members")
+    @GetMapping("/members")
     public List<Member> list() {
         List<Member> members = memberService.findMembers();
         return members;
     }
+
 }
