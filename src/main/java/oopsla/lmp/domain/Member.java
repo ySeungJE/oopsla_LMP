@@ -2,7 +2,6 @@ package oopsla.lmp.domain;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jdk.jfr.Name;
 import lombok.Getter;
 import lombok.Setter;
 
