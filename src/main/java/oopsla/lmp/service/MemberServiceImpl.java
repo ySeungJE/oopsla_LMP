@@ -26,6 +26,12 @@ public class MemberServiceImpl implements MemberService{
     public List<Member> findMembers() {
         return memberRepository.findAll();
     }
+
+    @Override
+    public Member findMemberById(String memberId) {
+        return memberRepository.searchMemberById(memberId);
+    }
+
     @Override
     public void validateDuplicateMember(Member member) {
         memberRepository.findById(member.getId())
