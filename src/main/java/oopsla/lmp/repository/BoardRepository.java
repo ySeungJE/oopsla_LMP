@@ -1,8 +1,6 @@
 package oopsla.lmp.repository;
 
-import oopsla.lmp.domain.Board;
-import oopsla.lmp.domain.Member;
-import org.springframework.data.jpa.repository.JpaRepository;
+import oopsla.lmp.domain.board.Board;
 
 import java.util.List;
 import java.util.Optional;

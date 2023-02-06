@@ -1,17 +1,14 @@
 package oopsla.lmp.service;
 
 import jakarta.transaction.Transactional;
-import oopsla.lmp.domain.Board;
-import oopsla.lmp.domain.Member;
+import oopsla.lmp.domain.board.Board;
 import oopsla.lmp.repository.BoardRepository;
-import oopsla.lmp.repository.MemberRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
 import java.util.NoSuchElementException;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;

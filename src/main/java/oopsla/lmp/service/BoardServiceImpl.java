@@ -1,7 +1,7 @@
 package oopsla.lmp.service;
 
 import lombok.RequiredArgsConstructor;
-import oopsla.lmp.domain.Board;
+import oopsla.lmp.domain.board.Board;
 import oopsla.lmp.repository.BoardRepository;
 import org.springframework.stereotype.Service;
 

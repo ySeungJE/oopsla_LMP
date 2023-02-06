@@ -1,10 +1,6 @@
 package oopsla.lmp.service;
 
-import oopsla.lmp.domain.Board;
-import oopsla.lmp.domain.Member;
-
-import java.util.List;
-import java.util.Optional;
+import oopsla.lmp.domain.board.Board;
 
 public interface BoardService {
     Long create(Board board);
