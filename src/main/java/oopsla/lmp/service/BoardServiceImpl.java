@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class BoardServiceImpl implements BoardService {
-    private BoardRepository boardRepository;
+    private final BoardRepository boardRepository;
     @Override
     public Board create(Board board) {
         Board savedBoard = boardRepository.save(board);
