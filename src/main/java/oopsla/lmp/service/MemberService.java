@@ -12,4 +12,5 @@ public interface MemberService {
     void validateDuplicateMember(Member member);
 
     List<Member> findMembers();
+
 }

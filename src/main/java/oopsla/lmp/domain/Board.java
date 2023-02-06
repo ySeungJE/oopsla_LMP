@@ -31,4 +31,11 @@ public class Board {
     public void setMember(Member member) {
         this.member = member;
     }
+
+    public Board update(String title, String content) {
+        this.title = title;
+        this.content = content;
+        return this;
+    }
+
 }

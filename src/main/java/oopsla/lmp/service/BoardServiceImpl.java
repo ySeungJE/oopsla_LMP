@@ -15,8 +15,9 @@ public class BoardServiceImpl implements BoardService {
         return savedBoard.getId();
     }
     @Override
-    public Board update(String title, String content) {
-        boardRepository.update(title, content);
+    public Board update(Long board_id, String title, String content) {
+        Board board = boardRepository.findById(board_id).get();
+        return board.update(title, content);
     }
 
     @Override
