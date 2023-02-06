@@ -9,7 +9,7 @@ import lombok.*;
 @Entity @Getter @Setter
 @NoArgsConstructor
 @Table(name = "board")
-public class Board {
+public class Board extends BaseTime{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")

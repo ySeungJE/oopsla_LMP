@@ -27,7 +27,7 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
-    public Board searchByTitle(String searched_text) {
+    public Board searchByTitle(String searchedText) {
         return null;
     }
 }
