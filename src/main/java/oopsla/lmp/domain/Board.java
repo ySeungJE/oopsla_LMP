@@ -38,4 +38,10 @@ public class Board {
         return this;
     }
 
+    public Board(Long id, Member member, String title, String content) {
+        this.id = id;
+        this.member = member;
+        this.title = title;
+        this.content = content;
+    }
 }

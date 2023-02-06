@@ -10,9 +10,9 @@ import org.springframework.stereotype.Service;
 public class BoardServiceImpl implements BoardService {
     private BoardRepository boardRepository;
     @Override
-    public Long create(Board board) {
+    public Board create(Board board) {
         Board savedBoard = boardRepository.save(board);
-        return savedBoard.getId();
+        return savedBoard;
     }
     @Override
     public Board update(Long board_id, String title, String content) {

@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface BoardService {
-    Long create(Board board);
+    Board create(Board board);
     Board update(Long board_id, String title, String content);
     void delete(Long board_id);
     Board searchByTitle(String searched_text);
