@@ -2,11 +2,9 @@ package oopsla.lmp.domain;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
+@ToString
 @Entity @Getter @Setter
 @NoArgsConstructor
 public class Member {

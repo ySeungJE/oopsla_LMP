@@ -25,12 +25,12 @@ public class BoardController {
     private final BoardRepository boardRepository;
 
     @PostMapping("/add")
-    public Board create(@RequestBody Board board) {
+    public Long create(@RequestBody Board board) {
         return boardService.create(board);
     }
 
     @PostMapping("/update")
-    public Board update(@RequestBody ForUpdate forUpdate) {
+    public Long update(@RequestBody ForUpdate forUpdate) {
         log.info("");
         Board searched = boardRepository.findById(2L).get();
         searched.update(forUpdate.title, forUpdate.content);

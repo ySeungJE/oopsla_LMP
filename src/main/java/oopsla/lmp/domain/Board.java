@@ -5,8 +5,9 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
+@ToString
 @Entity @Getter @Setter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor
 @Table(name = "board")
 public class Board {
     @Id
@@ -14,8 +15,8 @@ public class Board {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "member_id")
-    private String member_id;
+    @Column(name = "memberId")
+    private String memberId;
 
     @Column(nullable = false)
     private String title;
@@ -29,9 +30,9 @@ public class Board {
         return this;
     }
     @Builder
-    public Board(Long id, String member_id, String title, String content) {
+    public Board(Long id, String memberId, String title, String content) {
         this.id = id;
-        this.member_id = member_id;
+        this.memberId = memberId;
         this.title = title;
         this.content = content;
     }

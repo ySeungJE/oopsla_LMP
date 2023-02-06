@@ -11,4 +11,5 @@ public interface BoardRepository {
     Board save(Board board);
     Optional<Board> findById(Long id);
     List<Board> findAll();
+    void deleteById(Long id);
 }
