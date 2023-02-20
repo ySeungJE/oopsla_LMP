@@ -3,7 +3,9 @@ package oopsla.lmp.domain.member.sevice;
 import lombok.RequiredArgsConstructor;
 import oopsla.lmp.domain.member.Member;
 import oopsla.lmp.domain.member.repository.MemberRepository;
+import oopsla.lmp.web.member.dto.MemberUpdateDto;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -20,12 +22,22 @@ public class MemberServiceImpl implements MemberService{
     }
 
     @Override
-    public Optional<Member> findById(String id) {
+    public Optional<Member> findByEmail(String id) {
         return memberRepository.findById(id);
     }
     public List<Member> findMembers() {
         return memberRepository.findAll();
     }
+
+    @Override
+    @Transactional
+    public Member update(String email, MemberUpdateDto memberUpdateDto) {
+        Member targetMember = memberRepository.findById(email).get();
+        targetMember.setName(memberUpdateDto.getName());
+        targetMember.setPassword(memberUpdateDto.getPassword());
+        return targetMember;
+    }
+
     @Override
     public void validateDuplicateMember(Member member) {
         memberRepository.findById(member.getEmail())

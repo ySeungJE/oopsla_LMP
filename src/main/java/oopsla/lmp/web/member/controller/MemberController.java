@@ -4,12 +4,11 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import oopsla.lmp.domain.member.Member;
-import oopsla.lmp.domain.member.repository.MemberRepository;
 import oopsla.lmp.domain.member.sevice.MemberService;
+import oopsla.lmp.web.member.dto.MemberUpdateDto;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @Slf4j
 @RestController
@@ -28,6 +27,12 @@ public class MemberController {
     public List<Member> list() {
         List<Member> members = memberService.findMembers();
         return members;
+    }
+
+    @PatchMapping("/{email}")
+    public Member update(@PathVariable String email,
+                         @ModelAttribute MemberUpdateDto memberUpdateDto) {
+        return memberService.update(email, memberUpdateDto);
     }
 
 }

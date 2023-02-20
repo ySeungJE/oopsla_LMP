@@ -43,7 +43,7 @@ class MemberServiceImplTest {
         member.setPassword("awe489sd56");
         String created_id = memberService.join(member);
         //when
-        Optional<Member> foundMember = memberService.findById(member.getEmail());
+        Optional<Member> foundMember = memberService.findByEmail(member.getEmail());
         //then
         assertThat(foundMember.get().getPassword()).isEqualTo("awe489sd56");
     }

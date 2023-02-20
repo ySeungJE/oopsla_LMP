@@ -4,7 +4,6 @@ package oopsla.lmp.web.login.controller;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
-import jdk.jshell.spi.ExecutionControl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import oopsla.lmp.domain.login.service.LoginService;
@@ -12,7 +11,6 @@ import oopsla.lmp.domain.member.Member;
 import oopsla.lmp.web.login.dto.LoginForm;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-
 
 @Slf4j
 @RestController
@@ -53,4 +51,5 @@ public class LoginController {
         }
         return "로그아웃 완료";
     }
+
 }

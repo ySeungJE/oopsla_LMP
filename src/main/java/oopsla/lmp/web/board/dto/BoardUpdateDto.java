@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 @Getter
 @Setter
 public class BoardUpdateDto {
-    private Long id;
     private String content;
     private String title;
 }
