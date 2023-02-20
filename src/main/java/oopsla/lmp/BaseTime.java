@@ -1,4 +1,4 @@
-package oopsla.lmp.domain;
+package oopsla.lmp;
 
 import jakarta.persistence.EntityListeners;
 import jakarta.persistence.MappedSuperclass;

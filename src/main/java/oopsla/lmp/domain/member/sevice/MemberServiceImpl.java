@@ -1,8 +1,8 @@
-package oopsla.lmp.service;
+package oopsla.lmp.domain.member.sevice;
 
 import lombok.RequiredArgsConstructor;
-import oopsla.lmp.domain.Member;
-import oopsla.lmp.repository.MemberRepository;
+import oopsla.lmp.domain.member.Member;
+import oopsla.lmp.domain.member.repository.MemberRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,11 +16,11 @@ public class MemberServiceImpl implements MemberService{
     public String join(Member member) {
         validateDuplicateMember(member); //중복 회원 검증
         memberRepository.save(member);
-        return member.getId();
+        return member.getEmail();
     }
 
     @Override
-    public Optional<Member> findPassword(String id) {
+    public Optional<Member> findById(String id) {
         return memberRepository.findById(id);
     }
     public List<Member> findMembers() {
@@ -28,7 +28,7 @@ public class MemberServiceImpl implements MemberService{
     }
     @Override
     public void validateDuplicateMember(Member member) {
-        memberRepository.findById(member.getId())
+        memberRepository.findById(member.getEmail())
                 .ifPresent(m -> {
                     throw new IllegalStateException("이미 존재하는 회원입니다.");
                 });

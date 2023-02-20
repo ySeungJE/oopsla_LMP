@@ -1,9 +1,11 @@
-package oopsla.lmp.service;
+package oopsla.lmp.domain.board.service;
 
 import lombok.RequiredArgsConstructor;
 import oopsla.lmp.domain.board.Board;
-import oopsla.lmp.repository.BoardRepository;
+import oopsla.lmp.domain.board.repository.BoardRepository;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -14,6 +16,12 @@ public class BoardServiceImpl implements BoardService {
         Board savedBoard = boardRepository.save(board);
         return savedBoard.getId();
     }
+
+    @Override
+    public Board createBoard(Board board) {
+        return boardRepository.save(board);
+    }
+
     @Override
     public Long update(Long board_id, String title, String content) {
         Board board = boardRepository.findById(board_id).get();
@@ -29,5 +37,15 @@ public class BoardServiceImpl implements BoardService {
     @Override
     public Board searchByTitle(String searchedText) {
         return null;
+    }
+
+    @Override
+    public List<Board> findAll() {
+        return boardRepository.findAll();
+    }
+
+    @Override
+    public Board findById(Long id) {
+        return boardRepository.findById(id).get();
     }
 }

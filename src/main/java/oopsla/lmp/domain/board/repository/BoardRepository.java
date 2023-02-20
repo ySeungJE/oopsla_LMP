@@ -1,4 +1,4 @@
-package oopsla.lmp.repository;
+package oopsla.lmp.domain.board.repository;
 
 import oopsla.lmp.domain.board.Board;
 

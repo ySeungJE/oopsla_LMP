@@ -2,8 +2,9 @@ package oopsla.lmp.domain.board;
 
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.*;
-import oopsla.lmp.domain.BaseTime;
+import oopsla.lmp.BaseTime;
 
 @ToString
 @Entity @Getter @Setter
@@ -12,18 +13,13 @@ import oopsla.lmp.domain.BaseTime;
 public class Board extends BaseTime {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private Long id;
-
-    @Column(name = "memberId")
+    @NotEmpty
     private String memberId;
-
-    @Column(nullable = false)
+    @NotEmpty
     private String title;
-
-    @Column(columnDefinition = "TEXT", nullable = false)
+    @NotEmpty
     private String content;
-    private BoardType boardType;
     public Board update(String title, String content) {
         this.title = title;
         this.content = content;

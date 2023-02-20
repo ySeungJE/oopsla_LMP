@@ -2,7 +2,8 @@ package oopsla.lmp.service;
 
 import jakarta.transaction.Transactional;
 import oopsla.lmp.domain.board.Board;
-import oopsla.lmp.repository.BoardRepository;
+import oopsla.lmp.domain.board.service.BoardService;
+import oopsla.lmp.domain.board.repository.BoardRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

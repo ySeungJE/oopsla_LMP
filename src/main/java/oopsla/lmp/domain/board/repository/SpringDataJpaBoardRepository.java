@@ -1,11 +1,10 @@
-package oopsla.lmp.repository;
+package oopsla.lmp.domain.board.repository;
 
-import oopsla.lmp.domain.FinalWork;
 import oopsla.lmp.domain.board.Board;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 
 // 인터페이스만 상속을 해줘도 구현체를 만들어서 빈으로 띄워줌
-public interface SpringDataJpaFinalWorkRepository extends JpaRepository<FinalWork, String>, FinalWorkRepository {
+public interface SpringDataJpaBoardRepository extends JpaRepository<Board, Long>, BoardRepository {
 
 }
