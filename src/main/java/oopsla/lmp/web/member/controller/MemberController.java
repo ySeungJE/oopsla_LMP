@@ -6,6 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import oopsla.lmp.domain.member.Member;
 import oopsla.lmp.domain.member.sevice.MemberService;
 import oopsla.lmp.web.member.dto.MemberUpdateDto;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,6 +16,8 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("/members")
 public class MemberController {
+
+
 
     private final MemberService memberService;
     @PostMapping("/add")
@@ -35,4 +38,9 @@ public class MemberController {
         return memberService.update(email, memberUpdateDto);
     }
 
+    @DeleteMapping("/{email}")
+    public String delete(@PathVariable String email) {
+        memberService.delete(email);
+        return "삭제되었습니다";
+    }
 }

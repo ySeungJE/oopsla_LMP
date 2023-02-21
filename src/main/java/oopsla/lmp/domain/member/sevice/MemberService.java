@@ -13,5 +13,5 @@ public interface MemberService {
     void validateDuplicateMember(Member member);
     List<Member> findMembers();
     Member update(String email, MemberUpdateDto memberUpdateDto);
-
+    void delete(String email);
 }

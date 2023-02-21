@@ -3,7 +3,7 @@ package oopsla.lmp.domain.board.service;
 import lombok.RequiredArgsConstructor;
 import oopsla.lmp.domain.board.Board;
 import oopsla.lmp.domain.board.repository.BoardRepository;
-import oopsla.lmp.web.board.dto.BoardUpdateDto;
+import oopsla.lmp.web.board.dto.BoardCreateUpdateDto;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -33,9 +33,9 @@ public class BoardServiceImpl implements BoardService {
 
     @Override
     @Transactional
-    public Board updateBoard(Long board_id, BoardUpdateDto boardUpdateDto) {
+    public Board updateBoard(Long board_id, BoardCreateUpdateDto boardCreateUpdateDto) {
         Board board = boardRepository.findById(board_id).get();
-        board.update(boardUpdateDto.getTitle(), boardUpdateDto.getContent());
+        board.update(boardCreateUpdateDto.getTitle(), boardCreateUpdateDto.getContent());
         return board;
     }
 

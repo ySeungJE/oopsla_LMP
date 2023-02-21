@@ -39,6 +39,11 @@ public class MemberServiceImpl implements MemberService{
     }
 
     @Override
+    public void delete(String email) {
+        memberRepository.deleteById(email);
+    }
+
+    @Override
     public void validateDuplicateMember(Member member) {
         memberRepository.findById(member.getEmail())
                 .ifPresent(m -> {
