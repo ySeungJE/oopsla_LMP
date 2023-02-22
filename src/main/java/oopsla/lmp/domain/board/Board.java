@@ -20,16 +20,20 @@ public class Board extends BaseTime {
     private String title;
     @NotEmpty
     private String content;
+    @NonNull // sql alter 로 not null 설정해주면 기존 게시글들은 다 false 처리됨
+    private Boolean boardType;
+
     public Board update(String title, String content) {
         this.title = title;
         this.content = content;
         return this;
     }
-    @Builder
-    public Board(Long id, String memberId, String title, String content) {
+    @Builder // 프로퍼티 추가해줬으면 빌더에 넣어주는거 잊으면 안된다
+    public Board(Long id, String memberId, String title, String content, Boolean boardType) {
         this.id = id;
         this.memberId = memberId;
         this.title = title;
         this.content = content;
+        this.boardType = boardType;
     }
 }

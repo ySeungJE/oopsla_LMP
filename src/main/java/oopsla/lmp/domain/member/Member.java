@@ -15,11 +15,11 @@ import lombok.*;
 public class Member {
 
     @Id
-    @Email
+//    @Email
     @NotEmpty
     private String email;
     @NotEmpty
-    @Size(min = 5)
+//    @Size(min = 5)
     private String password;
     @NotEmpty
     private String name;

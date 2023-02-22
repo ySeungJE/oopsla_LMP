@@ -27,7 +27,7 @@ public class LoginController {
             return bindingResult.toString();
         }
 
-        Member loginMember = loginService.login(form.getId(), form.getPassword());
+        Member loginMember = loginService.login(form.getEmail(), form.getPassword());
 
         if (loginMember == null) {
             bindingResult.reject("loginFail", "아이디 또는 비밀번호가 맞지 않습니다");

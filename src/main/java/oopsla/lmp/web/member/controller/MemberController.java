@@ -6,7 +6,6 @@ import lombok.extern.slf4j.Slf4j;
 import oopsla.lmp.domain.member.Member;
 import oopsla.lmp.domain.member.sevice.MemberService;
 import oopsla.lmp.web.member.dto.MemberUpdateDto;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

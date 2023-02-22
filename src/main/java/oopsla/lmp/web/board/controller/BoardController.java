@@ -8,11 +8,16 @@ import lombok.extern.slf4j.Slf4j;
 import oopsla.lmp.domain.board.Board;
 import oopsla.lmp.domain.board.service.BoardService;
 import oopsla.lmp.domain.member.Member;
+import oopsla.lmp.exhandler.BoardCreateErrorResult;
 import oopsla.lmp.web.board.dto.BoardCreateUpdateDto;
 import oopsla.lmp.web.board.dto.BoardSearchDto;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindException;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -25,9 +30,13 @@ import static oopsla.lmp.web.login.controller.LoginController.LOGIN_MEMBER;
 public class BoardController {
 
     private final BoardService boardService;
+
     @GetMapping
     public List<Board> boards(Model model) {
-        return boardService.findAll();
+        List<Board> result = boardService.findAll().stream().filter(b -> b.getBoardType() == true).collect(Collectors.toList());
+        result.addAll(boardService.findAll().stream().filter(b -> b.getBoardType() == false).collect(Collectors.toList()));
+
+        return result;
     }
 
     @PostMapping
@@ -36,7 +45,8 @@ public class BoardController {
         return boardService.createBoard(Board.builder()
                 .title(createDto.getTitle())
                 .content(createDto.getContent())
-                .memberId(nowUser.getName()).build());
+                .memberId(nowUser.getName())
+                .boardType(createDto.getBoardType()).build());
     }
 
     @PatchMapping("/{boardId}")
@@ -61,5 +71,12 @@ public class BoardController {
                 board.getTitle().contains(searchDto.getSearchedText())).collect(Collectors.toList());
     }
 
+
+
+    @ExceptionHandler
+    public ResponseEntity<BoardCreateErrorResult> validationFailHandler(BindException e) {
+        BoardCreateErrorResult boardCreateErrorResult = new BoardCreateErrorResult("board-validation-fail","제목이나 내용이 빈 칸일 수 없습니다");
+        return new ResponseEntity(boardCreateErrorResult, HttpStatus.BAD_REQUEST);
+    }
 
 }
