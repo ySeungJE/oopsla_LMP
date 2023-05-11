@@ -7,6 +7,7 @@ const User = {
 
 export default function Register() {
     const [email, setEmail] = useState('');
+    const [userName, setUserName] = useState("");
     const [pw, setPw] = useState("");
     const [pwConfirm, setPwConfirm] = useState("");
 
@@ -27,6 +28,10 @@ export default function Register() {
         }
     }
 
+    const handleUserName = (e) => {
+        setUserName(e.target.value);
+    }
+
     const handlePassword = (e) => {
         setPw(e.target.value);
         const regex =
@@ -38,7 +43,9 @@ export default function Register() {
         }
     }
 
-    
+    const handlePwConfirm = (e) => {
+        setPwConfirm(e.target.value);
+    }
     //수정해야 됨
     const onClickConfirmButton = () => {
         if(email === User.email && pw === User.pw) {
@@ -80,8 +87,8 @@ export default function Register() {
                     type='text'
                     className='input'
                     placeholder="User name"
-                    value={pw}
-                    onChange={handlePassword}
+                    value={userName}
+                    onChange={handleUserName}
                     />
                 </div>
 
@@ -107,8 +114,8 @@ export default function Register() {
                     type='password'
                     className='input'
                     placeholder="Confirm password"
-                    value={pw}
-                    onChange={handlePassword}
+                    value={pwConfirm}
+                    onChange={handlePwConfirm}
                     />
                 </div>
                 <div className='errorMessageWrap'>
@@ -116,7 +123,7 @@ export default function Register() {
                         <div>영문, 숫자, 특수문자 포함 8자 이상 입력해주세요.</div>
                     )}
                 </div>
-                {pw != pwConfirm && <p>비밀번호가 일치하지 않습니다.</p>}
+                {pw !== pwConfirm && <p>비밀번호가 일치하지 않습니다.</p>}
             </div>
             
 

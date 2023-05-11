@@ -1,12 +1,11 @@
 import React, {useState, useEffect} from 'react'
-import axios from 'axios';
+import Oopsla from "./assets/Image/Logo.png"
 
 const User = {
     email: 'test@example.com',
     pw: 'test2323@@@'
 }
 
-//Login 컴포넌트에는 email, pw, emailValid, pwValid, notAllow이라는 5개의 상태 값을 사용
 export default function Login() {
     const [email, setEmail] = useState('');
     const [pw, setPw] = useState("");
@@ -16,7 +15,7 @@ export default function Login() {
     const [notAllow, setnotAllow] = useState(true);
 
 
-    //handleEmail 함수는 입력된 이메일 값이 올바른 형식인지 정규 표현식으로 검증하고, 검증 결과에 따라 emailValid 상태 값을 업데이트
+
     const handleEmail = (e) => {
         setEmail(e.target.value);
         const regex =
@@ -29,7 +28,6 @@ export default function Login() {
         }
     }
 
-    //handlePassword 함수는 입력된 이메일 값이 올바른 형식인지 정규 표현식으로 검증하고, 검증 결과에 따라 pwValid 상태 값을 업데이트한다
     const handlePassword = (e) => {
         setPw(e.target.value);
         const regex =
@@ -41,7 +39,6 @@ export default function Login() {
         }
     }
 
-    //onClickConfirmButton 함수는 입력된 이메일과 비밀번호 값이 User 객체의 이메일과 비밀번호 값과 일치하는지 확인하고, 결과에 따라 로그인 성공 여부를 알린다
     const onClickConfirmButton = () => {
         if(email === User.email && pw === User.pw) {
             alert('로그인에 성공했습니다.');
@@ -50,7 +47,6 @@ export default function Login() {
         }
     }
     
-    //useEffect 훅은 emailValid와 pwValid 값이 변경될 때마다 실행된다. 두 값이 모두 true이면 notAllow 값을 false로 업데잍트하고, 그렇지 않으면 true로 업데이트한다.
     useEffect (() => {
         if(emailValid && pwValid) { //true이면
             setnotAllow(false); //비활성화 상태를 풀어줌
@@ -59,31 +55,36 @@ export default function Login() {
         setnotAllow(true); //기본적으로는 비활성화
     }, [emailValid, pwValid]);
 
+  
     return (
         <div className='page'>
-            <div className='titleWrap'>
+            <img className="oopsla-logo" src={Oopsla} alt="oops!a logo" title="천다인이 로고 만듦"/>
+            {/* <div className='titleWrap'>
                 이메일과 비밀번호를<br/>입력해주세요
-            </div>
+            </div> */}
 
             <div className='contentWrap'>
-                <div className='inputTitle'>Email</div>
+                <div className='inputTitle'>이메일 주소</div>
                 <div className='inputWrap'>
                     <input
                     type='text'
                     className='input'
                     placeholder='test@gmail.com'
                     value={email}
+                    //따라서 onChange={handleEmail}에서 handleEmail() 대신 handleEmail을 전달하는 것은 이벤트가 발생할 때 handleEmail 함수를 호출하기 위한 것입니다. handleEmail()를 전달하면 페이지가 렌더링될 때 바로 함수가 호출되므로, 이벤트가 발생했을 때 실행되지 않습니다.
+                    //예를 들어 onClick을 할 때 () 사용하면 원할 때 안될 수 있음
                     onChange={handleEmail}/>
                 </div>
                 <div className='errorMessageWrap'>
                     {
+                        //if생략
                         !emailValid && email.length>0 && (
                             <div>올바른 이메일을 입력해주세요.</div>
                         )
                     }
                 </div>
 
-                <div style={{marginTop: "26px"}} className='inputTitle'>Password</div>
+                <div style={{marginTop: "26px"}} className='inputTitle'>비밀번호</div>
                 <div className='inputWrap'>
                     <input
                     type='password'
