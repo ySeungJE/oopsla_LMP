@@ -23,7 +23,7 @@ class MemberServiceImplTest {
     public void join_Test() {
         //given
         Member member = new Member();
-        member.setEmail("testMember");
+        member.setEmail("123");
         member.setName("윤승제");
         member.setPassword("awe48s9d56");
 
@@ -46,6 +46,20 @@ class MemberServiceImplTest {
         Optional<Member> foundMember = memberService.findByEmail(member.getEmail());
         //then
         assertThat(foundMember.get().getPassword()).isEqualTo("awe489sd56");
+    }
+
+    @Test
+    public void deleteByEmailTest() {
+        //given
+        Member member = new Member();
+        member.setEmail("test@test");
+        member.setName("김수인");
+        member.setPassword("awe489sd56");
+        String createdEmail = memberService.join(member);
+        //when
+        memberService.delete(createdEmail);
+        //then
+        assertThat(memberService.findByEmail(createdEmail).orElse(null)).isEqualTo(null);
     }
 
     @Test

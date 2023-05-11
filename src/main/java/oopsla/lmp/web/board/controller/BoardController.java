@@ -17,38 +17,29 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindException;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import static oopsla.lmp.web.login.controller.LoginController.LOGIN_MEMBER;
-
 @Slf4j
 @RestController
 @RequestMapping("/board")
 @RequiredArgsConstructor
 public class BoardController {
-
     private final BoardService boardService;
-
-    @GetMapping
-    public List<Board> boards(Model model) {
-        List<Board> result = boardService.findAll().stream().filter(b -> b.getBoardType() == true).collect(Collectors.toList());
-        result.addAll(boardService.findAll().stream().filter(b -> b.getBoardType() == false).collect(Collectors.toList()));
-
-        return result;
-    }
-
     @PostMapping
     public Board create(@Valid @ModelAttribute BoardCreateUpdateDto createDto, HttpServletRequest request) {
         Member nowUser = (Member) request.getSession().getAttribute(LOGIN_MEMBER);
         return boardService.createBoard(Board.builder()
                 .title(createDto.getTitle())
                 .content(createDto.getContent())
-                .memberId(nowUser.getName())
+                .memberName(nowUser.getName())
                 .boardType(createDto.getBoardType()).build());
     }
-
+    @GetMapping
+    public List<Board> findAll() {
+        return boardService.findAll();
+    }
     @PatchMapping("/{boardId}")
     public Board update(@PathVariable Long boardId, @Valid @ModelAttribute BoardCreateUpdateDto updateDto) {
         return boardService.updateBoard(boardId, updateDto);
@@ -67,16 +58,7 @@ public class BoardController {
 
     @PostMapping("/searchTitle")
     public List<Board> searchByTitle(@Valid @ModelAttribute BoardSearchDto searchDto) {
-        return boardService.findAll().stream().filter(board ->
-                board.getTitle().contains(searchDto.getSearchedText())).collect(Collectors.toList());
-    }
-
-
-
-    @ExceptionHandler
-    public ResponseEntity<BoardCreateErrorResult> validationFailHandler(BindException e) {
-        BoardCreateErrorResult boardCreateErrorResult = new BoardCreateErrorResult("board-validation-fail","제목이나 내용이 빈 칸일 수 없습니다");
-        return new ResponseEntity(boardCreateErrorResult, HttpStatus.BAD_REQUEST);
+        return boardService.searchByTitle(searchDto.getSearchedText());
     }
 
 }

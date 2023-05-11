@@ -9,5 +9,7 @@ public interface MemberRepository {
     Member save(Member member);
     Optional<Member> findById(String id);
     List<Member> findAll();
-    void deleteById(String Email);
+    void deleteByEmail(String Email);
 }
+
+

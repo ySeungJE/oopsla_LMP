@@ -12,6 +12,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class MemberServiceImpl implements MemberService{
     private final MemberRepository memberRepository;
     @Override
@@ -20,29 +21,24 @@ public class MemberServiceImpl implements MemberService{
         memberRepository.save(member);
         return member.getEmail();
     }
-
     @Override
     public Optional<Member> findByEmail(String id) {
         return memberRepository.findById(id);
     }
-    public List<Member> findMembers() {
-        return memberRepository.findAll();
-    }
-
     @Override
-    @Transactional
     public Member update(String email, MemberUpdateDto memberUpdateDto) {
         Member targetMember = memberRepository.findById(email).get();
         targetMember.setName(memberUpdateDto.getName());
         targetMember.setPassword(memberUpdateDto.getPassword());
         return targetMember;
     }
-
     @Override
     public void delete(String email) {
-        memberRepository.deleteById(email);
+        memberRepository.deleteByEmail(email);
     }
-
+    public List<Member> findMembers() {
+        return memberRepository.findAll();
+    }
     @Override
     public void validateDuplicateMember(Member member) {
         memberRepository.findById(member.getEmail())

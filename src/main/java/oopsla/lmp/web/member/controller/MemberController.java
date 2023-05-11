@@ -15,9 +15,6 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("/members")
 public class MemberController {
-
-
-
     private final MemberService memberService;
     @PostMapping("/add")
     public Member createMember (@Valid @ModelAttribute Member member){
@@ -40,6 +37,6 @@ public class MemberController {
     @DeleteMapping("/{email}")
     public String delete(@PathVariable String email) {
         memberService.delete(email);
-        return "삭제되었습니다";
+        return "회원 정보가 삭제되었습니다";
     }
 }

@@ -8,18 +8,16 @@ import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 
-
+@Data
 @Entity
 @NoArgsConstructor
-@Data
 public class Member {
-
     @Id
-//    @Email
+    @Email
     @NotEmpty
     private String email;
     @NotEmpty
-//    @Size(min = 5)
+    @Size(min = 5)
     private String password;
     @NotEmpty
     private String name;
@@ -30,5 +28,6 @@ public class Member {
         this.password = password;
         this.name = name;
     }
-
 }
+
+

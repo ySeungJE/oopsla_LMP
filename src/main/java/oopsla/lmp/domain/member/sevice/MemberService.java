@@ -8,8 +8,7 @@ import java.util.Optional;
 
 public interface MemberService {
     String join(Member member);
-
-    Optional<Member> findByEmail(String id);
+    Optional<Member> findByEmail(String email);
     void validateDuplicateMember(Member member);
     List<Member> findMembers();
     Member update(String email, MemberUpdateDto memberUpdateDto);

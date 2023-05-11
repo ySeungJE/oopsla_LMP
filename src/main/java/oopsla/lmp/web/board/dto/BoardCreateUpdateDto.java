@@ -1,10 +1,12 @@
 package oopsla.lmp.web.board.dto;
 
 import jakarta.validation.constraints.NotEmpty;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NonNull;
 
 @Data
+@AllArgsConstructor
 public class BoardCreateUpdateDto {
     @NotEmpty
     private String content;

@@ -7,6 +7,6 @@ import lombok.Data;
 @Data
 public class BoardSearchDto {
     @NotEmpty
-    @Size(min = 3, max = 100)
+//    @Size(min = 3, max = 100)
     private String searchedText;
 }

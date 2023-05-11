@@ -12,7 +12,6 @@ import org.springframework.web.method.support.ModelAndViewContainer;
 
 import static oopsla.lmp.web.login.controller.LoginController.LOGIN_MEMBER;
 
-
 @Slf4j
 public class LoginMemberArgumentResolver implements HandlerMethodArgumentResolver {
 
