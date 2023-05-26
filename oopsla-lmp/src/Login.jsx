@@ -58,7 +58,7 @@ export default function Login() {
   
     return (
         <div className='page'>
-            <img className="oopsla-logo" src={Oopsla} alt="oops!a logo" title="천다인이 로고 만듦"/>
+            <img className="oopsla-logo" src={Oopsla} alt="oops!a logo" title="none"/>
             {/* <div className='titleWrap'>
                 이메일과 비밀번호를<br/>입력해주세요
             </div> */}
