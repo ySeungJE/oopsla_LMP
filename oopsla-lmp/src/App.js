@@ -1,9 +1,9 @@
 import Login from "./Login";
 import Register from "./Register";
-import AboutOopsla from "./About/AboutOopsla";
+import AfterGrad from "./About/AfterGrad";
 
 export default function App() {
   return (
-    <AboutOopsla/>
+    <AfterGrad/>
   );
 }
