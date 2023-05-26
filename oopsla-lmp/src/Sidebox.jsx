@@ -1,8 +1,14 @@
 import React from 'react';
 
+import { Navigation } from 'react-minimal-side-navigation';
+import 'react-minimal-side-navigation/lib/ReactMinimalSideNavigation.css';
+
 export default function Sidebox() {
 
     return (
+        // <Navigation
+        //     //you can use your own router's api to get pathname
+        // />
         <div>
             <div id="navigation">
                 <ul id="vertical-menu">
